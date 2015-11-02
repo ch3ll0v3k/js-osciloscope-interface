@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en-US">
+    <meta charset="utf-8"/>
+    <title>Math.Sin-Cos</title>
+    <link rel="stylesheet" type="text/css" href="css/osciloscope.css">
+    <script type="text/javascript" src="js/temax-main.js"></script>
+    <script type="text/javascript" src="js/osciloscope.js"></script>
+</head>
+<body>
+<!-- ======================================================================= -->
+<div id="app-main-box">
+    
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="app-header-box">
+        <div id="app-window-icon"></div>
+        <div id="app-window-title"> App-Name v0.0.1</div>
+        <div id="app-window-control-box">CTRL</div>
+
+    </div>
+
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-left-box">
+        
+        <div id="oscil-grid-box"></div>
+        <canvas width="700px" height="500px" id="oscil-canvas"></canvas>
+
+        <div id="_point_A"></div>
+        <div id="_point_B"></div>
+        <div id="_point_C"></div>
+
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-right-box">
+        
+        <div class="_button" style="margin-top: 15px; margin-left: 0px; color: #0F0;" onclick="_start()">Start</div>
+        <div class="_button" style="margin-top: 20px; margin-left: 0px; color: #F00;" onclick="_stop()">Stop</div>
+
+        <div class="menu-text"> X:</div>
+        <input value="2.20" min="0.0" max="25" type="number" step="0.01" class="_number_input" onchange="_X_INCR_DECR(this)"/>
+
+        <div class="menu-text"> Y:</div>
+        <input value="0.81" min="0.0" max="1.96" type="number" step="0.01" class="_number_input" onchange="_Y_INCR_DECR(this)"/>
+
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-status-box">
+        status-box
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+</div>
+<!-- ======================================================================= -->
+<!--
+
+-->    
+<!-- ======================================================================= -->
+</body>
+</html>

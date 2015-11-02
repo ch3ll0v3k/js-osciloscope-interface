@@ -1,0 +1,98 @@
+/* -------------------------------------------------------------------------- */
+body{
+    margin: 0; padding: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+#app-main-box{ 
+    width: 904px; height: 528px; margin: 20px auto;  border: solid 1px #333; border-top: solid 26px #333; 
+    border-top-left-radius: 6px; border-top-right-radius: 6px; 
+    /*
+    box-shadow: 0 0 5px #00F; padding: 2px 0 0 2px;
+    */
+}
+#app-header-box{
+    float: left; display: block; width: 800px; height: 24px; margin-top: -24px; color: #fff; 
+    padding-left: 10px; line-height: 24px; margin-bottom: 1px;
+}
+
+#app-window-icon{
+    float: left; display: block; width: 24px; height: 24px; padding-left: 10px; line-height: 24px;
+    background-image: url('../data/imgs/icon.png'); background-repeat:  no-repeat; background-size:  22px; 
+}
+
+#oscil-main-left-box{
+    float: left; width: 700px; height: 500px; 
+}
+
+#oscil-canvas{
+    z-index: 61; position: absolute; box-shadow: 0 0 0 2px #333 inset;
+}
+
+#oscil-grid-box{
+    z-index: 60; position: absolute; width: 700px; height: 500px; 
+}
+.oscil-grid-cell{
+    float: left; display: block;
+    width: 49px; height: 49px; border-right: dashed 1px #999; border-bottom: dashed 1px #999; 
+    background-color: rgba(33, 33, 33, 0.8); 
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+#oscil-main-right-box{
+    float: left; width: 193px; height: 490px;  box-shadow: 0 0 0 2px #333 inset; padding: 5px;
+    margin-left: 1px; 
+}
+
+
+.menu-text{
+    float: left; width: 100%; display: block; padding: 10px;
+}
+._number_input{
+    float: left; width: 86%; height: 26px; padding-left: 20px; 
+    /*
+    box-shadow: 2px 2px 5px #555;    
+    */
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+#oscil-main-status-box{
+
+    float: left; width: 900px; height: 27px; box-shadow: 0 0 0 2px #333 inset; padding-left: 5px;
+    margin-top: 1px; line-height: 27px;
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+#_point_A{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: red; border-radius: 10px;
+}
+#_point_B{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: green; border-radius: 10px;
+}
+
+#_point_C{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: blue; border-radius: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+._button{
+    float: left; width: 100%; height: 26px; background-color: #333; 
+    text-align: center; line-height: 26px; color: #fff; box-shadow: 2px 2px 5px #555; cursor: pointer; 
+}
+._button:hover{ color: red; }
+/* -------------------------------------------------------------------------- */
