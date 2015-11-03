@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en-US">
+    <!-- ================================================ -->
+    <meta charset="utf-8"/>
+    <title>JS-Osciloscope-Interface</title>
+    <!-- ================================================ -->
+    <link rel="stylesheet" type="text/css" href="css/temax-page-loader.css"/>
+    <link rel="stylesheet" type="text/css" href="css/temax-fonts.css"/>
+    <link rel="stylesheet" type="text/css" href="css/osciloscope.css"/>
+    <!-- ================================================ -->
+    <script type="text/javascript" src="js/temax-page-loader.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/temax-main.js"></script>
+    <script type="text/javascript" src="js/osciloscope.js"></script>
+    <!-- ================================================ -->
+    <!-- ================================================ -->
+</head>
+<body>
+<!-- ======================================================================= -->
+<div id="page_loader_bol"></div>
+<div id="page_loader_box">
+    <div id="page_loader_img"></div> <div id="page_loader_text"></div>
+</div>
+<!-- ======================================================================= -->
+<div id="app-main-box">
+    
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="app-header-box">
+        <div id="app-window-icon"></div>
+        <div id="app-window-title">JS-Osciloscope-Interface v0.0.1</div>
+        <div id="app-window-control-box">CTRL</div>
+
+    </div>
+
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-left-box">
+        
+        <div id="oscil-grid-box"></div>
+        <canvas width="700px" height="500px" id="oscil-canvas"></canvas>
+
+        <div id="_point_A"></div>
+        <div id="_point_B"></div>
+
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-right-box">
+
+        <!-- ============================================== -->
+        <div id="on-button" onclick="_start()"></div>
+        <div id="off-button" onclick="_stop()"></div>
+        <!-- ============================================== -->
+        <span>
+            V: <input value="950" min="12" max="1000" type="number" step="1" id="speed_chenger" onchange="_change_update_speed(this)"/>
+        </span>
+
+        <div class="_line"></div>
+        <div class="_line"></div>
+        <!-- ============================================== -->
+        <fieldset class="channel-fieldset-box" id="CH_1">
+            <legend class="channel-legend">CH-1:</legend>
+
+            <div id="on-button-CH_1" class="on-button-CH"></div>
+            <div id="off-button-CH_1" class="off-button-CH"></div>
+
+            <div class="menu-item-text"> 
+                <input value="2.202" min="0.000" max="25.000" type="number" step="0.001" class="_number_input" onchange="_X_INCR_DECR(this)"/>
+                : X 
+            </div>
+
+            <div class="menu-item-text"> 
+                <input value="0.801" min="0.000" max="1.960" type="number" step="0.001" class="_number_input" onchange="_Y_INCR_DECR(this)"/>        
+                : Y 
+            </div>
+
+            <div class="color-box">
+                <div class="color-box-cell bg-red" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-green" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-blue" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-yellow" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-purple" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-orange" onclick="_color_selector(this)"></div> 
+            </div>
+
+        </fieldset>
+
+        <!-- ============================================== -->
+        <div class="_line"></div>
+        <!-- ============================================== -->
+        <fieldset class="channel-fieldset-box" id="CH_2">
+            <legend class="channel-legend">CH-2:</legend>
+
+            <div id="on-button-CH_2" class="on-button-CH"></div>
+            <div id="off-button-CH_2" class="off-button-CH"></div>
+
+            <div class="menu-item-text"> 
+                <input value="2.202" min="0.000" max="25.000" type="number" step="0.001" class="_number_input" onchange="_X_INCR_DECR(this)"/>
+                : X 
+            </div>
+
+            <div class="menu-item-text"> 
+                <input value="0.801" min="0.000" max="1.960" type="number" step="0.001" class="_number_input" onchange="_Y_INCR_DECR(this)"/>        
+                : Y 
+            </div>
+
+            <div class="color-box">
+                <div class="color-box-cell bg-red" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-green" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-blue" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-yellow" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-purple" onclick="_color_selector(this)"></div> 
+                <div class="color-box-cell bg-orange" onclick="_color_selector(this)"></div> 
+            </div>
+
+        </fieldset>
+
+
+        <!-- ============================================== -->
+
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div id="oscil-main-status-box">
+        status-box
+    </div>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+</div>
+<!-- ======================================================================= -->
+<!--
+
+-->    
+<!-- ======================================================================= -->
+</body>
+</html>

@@ -1,0 +1,211 @@
+/* -------------------------------------------------------------------------- */
+/*
+font-family: 'arial-narrow';
+font-family: 'Audiowide';
+font-family: 'Cherry-Cream-Soda';
+font-family: 'Gloria-Hallelujah';
+
+font-family: 'capture_it';
+font-family: 'capture_it_2';
+font-family: 'tesla';
+font-family: 'Orbitron';
+
+/* -------------------------------------------------------------------------- */
+/*
+body{
+    margin: 0; padding: 0;
+}
+*/
+
+/* -------------------------------------------------------------------------- */
+#app-main-box{ 
+    width: 904px; height: 528px; margin: 20px auto;  border: solid 1px #333; border-top: solid 26px #333; 
+    border-top-left-radius: 6px; border-top-right-radius: 6px; 
+    display: none; background-color: #fff;
+    box-shadow: 0 0 225px #999; 
+    /*
+    padding: 2px 0 0 2px;
+    */
+}
+#app-header-box{
+    float: left; display: block; width: 800px; height: 24px; margin-top: -24px; color: #fff; 
+    padding-left: 10px; line-height: 24px; margin-bottom: 1px;
+}
+
+#app-window-icon{
+    float: left; display: block; width: 24px; height: 24px; padding-left: 10px; line-height: 24px;
+    background-image: url('../data/imgs/icon.png'); background-repeat:  no-repeat; background-size:  22px; 
+}
+#app-window-title{
+    font-family: 'Audiowide'; font-size: 16px; color: #BBB; text-shadow: 2px 2px 1px #000;
+}
+
+#oscil-main-left-box{
+    float: left; width: 700px; height: 500px; 
+}
+
+#oscil-canvas{
+    z-index: 61; position: absolute; box-shadow: 0 0 0 2px #333 inset;
+}
+
+#oscil-grid-box{
+    z-index: 60; position: absolute; width: 700px; height: 500px; 
+}
+.oscil-grid-cell{
+    float: left; display: block;
+    width: 49px; height: 49px; border-right: dashed 1px #666; border-bottom: dashed 1px #666; 
+    background-color: rgba(3, 3, 3, 1); 
+}
+
+/* -------------------------------------------------------------------------- */
+#oscil-main-right-box{
+    float: left; width: 193px; height: 490px; padding: 5px; margin-left: 1px; 
+    /*
+    box-shadow: 0 0 0 2px #333 inset; 
+    */
+}
+
+.menu-item-text{
+    float: left; display: block; padding: 10px;
+    font-family: 'Audiowide'; font-size: 16px;
+}
+._number_input{
+    width: 80px; height: 26px; padding-left: 10px; border-radius: 6px; border: solid 1px #333;
+    font-family: 'Audiowide'; font-size: 15px; box-shadow: 2px 2px 8px #555; 
+}
+
+
+#speed_chenger{
+    width: 80px; height: 26px; padding-left: 10px; border-radius: 6px; border: solid 1px #333;
+    font-family: 'Audiowide'; font-size: 15px; box-shadow: 2px 2px 8px #555; 
+    margin: 10px 0 0 30px;
+}
+/*
+#speed_chenger:before{
+    float: left; display: block; width: 100px; height: 40px;
+    content: "V: "; margin-left: -50px; background-color: red; color: #000;
+}
+*/
+/* -------------------------------------------------------------------------- */
+#oscil-main-status-box{
+
+    float: left; width: 900px; height: 27px; padding-left: 5px; line-height: 27px;
+    font-family: 'Orbitron'; font-weight: bold; color: #F00; border-top: solid 1px #333;  
+    /*
+    box-shadow: 0 0 0 2px #333 inset; 
+    */
+}
+
+/* -------------------------------------------------------------------------- */
+#_point_A{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: red; border-radius: 10px;
+}
+#_point_B{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: green; border-radius: 10px;
+}
+
+#_point_C{
+    z-index: 50;
+    position: absolute; width: 10px; height: 10px; background-color: blue; border-radius: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MAIN-ON-OFF BUTTON */
+#on-button{
+    float: left; display: block; width: 32px; height: 32px; cursor: pointer; margin: 6px;
+    background-image: url('../data/imgs/on.png'); background-repeat: no-repeat; background-size: 32px;
+    border: solid 2px #333; border-radius: 30px; padding: 6px; background-position: 6px 6px;
+    background-color: #777; box-shadow: 2px 2px 4px #444;
+}
+#on-button:hover{
+    border: solid 2px #0F0;
+}
+
+#off-button{
+    float: left; display: none; width: 32px; height: 32px; cursor: pointer; margin: 6px;
+    background-image: url('../data/imgs/off.png'); background-repeat: no-repeat; background-size: 32px;
+    border: solid 2px #333; border-radius: 30px; padding: 6px; background-position: 6px 6px;
+    background-color: #777; box-shadow: 2px 2px 4px #444;
+}
+#off-button:hover{
+    border: solid 2px #F00;
+
+
+/* PER-CHANNEL-ON-OFF BUTTON */
+}
+.on-button-CH{
+    position: absolute; display: block; width: 24px; height: 24px; cursor: pointer; margin: -24px 0 0 144px;
+    background-image: url('../data/imgs/on.png'); background-repeat: no-repeat; background-size: 24px;
+    border: solid 2px #333; border-radius: 30px; padding: 3px; background-position: 3px 3px;
+    background-color: #777; box-shadow: 2px 2px 4px #444;
+}
+.on-button-CH:hover{
+    border: solid 2px #0F0;
+}
+
+.off-button-CH{
+    position: absolute; display: block; width: 24px; height: 24px; cursor: pointer; margin: -24px 0 0 144px;
+    background-image: url('../data/imgs/off.png'); background-repeat: no-repeat; background-size: 24px;
+    border: solid 2px #333; border-radius: 30px; padding: 3px; background-position: 3px 3px;
+    background-color: #777; box-shadow: 2px 2px 4px #444;
+}
+.off-button-CH:hover{
+    border: solid 2px #F00;
+}
+
+/* -------------------------------------------------------------------------- */
+.color-box{
+    float: left; display: block; width: 160px; height: 24px;
+}
+.color-box-cell{
+    float: left; display: block; width: 20px; height: 20px; box-shadow: 1px 1px 3px #333;
+    border: solid 1px #333; cursor: pointer; border-radius: 24px; margin-left: 4px;
+}
+
+.bg-red{        background-color: #F00; }
+.bg-green{      background-color: #0F0; }
+.bg-blue{       background-color: #00F; }
+.bg-yellow{     background-color: yellow; }
+.bg-purple{     background-color: purple; }
+.bg-orange{     background-color: orange; }
+
+/* -------------------------------------------------------------------------- */
+#CH_1{}
+#CH_2{}
+
+
+.channel-fieldset-box{
+    float: left; width: 160px; border: dashed 1px #333; border-radius: 12px; 
+}
+
+.channel-legend{
+    font-family: 'Audiowide'; font-size: 16px; padding: 2px 10px;
+}
+/* -------------------------------------------------------------------------- */
+._button{
+    float: left; width: 100%; height: 26px; background-color: #333; 
+    text-align: center; line-height: 26px; color: #fff; box-shadow: 2px 2px 5px #555; cursor: pointer; 
+}
+._button:hover{ color: red; }
+/* -------------------------------------------------------------------------- */
+._line{
+    float: left; width: 90%; margin-left: 5%; display: block; border-bottom: dashed 1px #000;
+    margin-top: 10px; margin-bottom: 10px; 
+}
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
