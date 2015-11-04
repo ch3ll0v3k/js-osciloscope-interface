@@ -28,7 +28,6 @@ var _CH_1_color = "red";
 var _CH_2_color = "blue";
 
 
-
 window.addEventListener('load', function(){
 
     // -------------------------------------------------------------
@@ -56,6 +55,7 @@ window.addEventListener('load', function(){
         off_button_CH_1.style.display = 'none'; on_button_CH_1.style.display = 'block'; _ctrl_CH_1();
     };
 
+    // -------------------------------------------------------------
     on_button_CH_2 = __byId("on-button-CH_2");
     off_button_CH_2 = __byId("off-button-CH_2");
     
@@ -123,6 +123,7 @@ window.addEventListener('load', function(){
 
 
     // -------------------------------------------------------------
+    _setAllValues();
     //_run();
     // -------------------------------------------------------------
 
@@ -130,8 +131,7 @@ window.addEventListener('load', function(){
 // ================================================================================
 var tTimer;
 var allowToRun = true;
-var _UPDATE_SPEED = 10;
-var _REDRAW_DELAY = 50;
+var _REDRAW_DELAY = 10;
 
 var _CENTER_OFFSET_X = 250;
 var _CENTER_OFFSET_Y = 250;
@@ -141,6 +141,7 @@ var _MAX_Y_VALUE = 1.96;
 
 // ----------------------------------------------------
 // CH_1
+var _ENABLE_CH_1 = true;
 
 var _COS_STEP_CH_1 = 0.02;
 var _SIN_STEP_CH_1 = 0.02;
@@ -148,16 +149,18 @@ var _SIN_STEP_CH_1 = 0.02;
 var _cos_val_CH_1 = 0;
 var _sin_val_CH_1 = 0;
 
+var _CENTER_OFFSET_Y_CH_1 = 135;
 
-var _OFFSET_X_CH_1 = 0;
-var _OFFSET_Y_CH_1 = 250;
+var _CURR_OFFSET_X_CH_1 = 0;
+var _CURR_OFFSET_Y_CH_1 = 250;
 
-var _X_CH_1_INCREMENT = 2.20;
-var _Y_CH_1_INCREMENT = 0.81;
+var _X_CH_1_INCREMENT = 0.674;
+var _Y_CH_1_INCREMENT = 0.301;
 
 
 // ----------------------------------------------------
 // CH_2
+var _ENABLE_CH_2 = true;
 
 var _COS_STEP_CH_2 = 0.02;
 var _SIN_STEP_CH_2 = 0.02;
@@ -165,12 +168,13 @@ var _SIN_STEP_CH_2 = 0.02;
 var _cos_val_CH_2 = 0;
 var _sin_val_CH_2 = 0;
 
+var _CENTER_OFFSET_Y_CH_2 = 340 ;
 
-var _OFFSET_X_CH_2 = 0;
-var _OFFSET_Y_CH_2 = 250;
+var _CURR_OFFSET_X_CH_2 = 0;
+var _CURR_OFFSET_Y_CH_2 = 250;
 
-var _X_CH_2_INCREMENT = 1.20;
-var _Y_CH_2_INCREMENT = 0.61;
+var _X_CH_2_INCREMENT = 1.105;
+var _Y_CH_2_INCREMENT = 0.401;
 
 // ----------------------------------------------------
 
@@ -208,25 +212,38 @@ function _run(){
     // -------------------------------------------------------------
 
     // -------------------------------------------------------------
-    while(_OFFSET_X_CH_1 < 700){
-        
-        // CH_1
-        _OFFSET_X_CH_1 += (_X_CH_1_INCREMENT);
-        _cos_val_CH_1 += (_COS_STEP_CH_1); 
-        _sin_val_CH_1 += (_SIN_STEP_CH_1);
-        _OFFSET_Y_CH_1 = (_CENTER_OFFSET_Y) - ( (Math.cos(_cos_val_CH_1)/2 ) * (_CENTER_OFFSET_Y * (_Y_CH_1_INCREMENT)) );
-        _DRAW(_ctx_CH_1, _OFFSET_X_CH_1, _OFFSET_Y_CH_1, _CH_1_color);
+    // CH_1
+    
+    if(_ENABLE_CH_1){
 
+        while(_CURR_OFFSET_X_CH_1 < 700){
+                    
+            _CURR_OFFSET_X_CH_1 += (_X_CH_1_INCREMENT);
+            _cos_val_CH_1 += (_COS_STEP_CH_1); 
+            _sin_val_CH_1 += (_SIN_STEP_CH_1);
+
+            _CURR_OFFSET_Y_CH_1 = (_CENTER_OFFSET_Y_CH_1) - ( (Math.cos(_cos_val_CH_1)/2 ) * (_CENTER_OFFSET_Y * (_Y_CH_1_INCREMENT)) );
+
+            _DRAW(_ctx_CH_1, _CURR_OFFSET_X_CH_1, _CURR_OFFSET_Y_CH_1, _CH_1_color);
+
+        }
     }
+    // -------------------------------------------------------------
+    // CH_2
+    
+    if(_ENABLE_CH_2){
 
-    while(_OFFSET_X_CH_2 < 700){
-        // CH_2
-        _OFFSET_X_CH_2 += (_X_CH_2_INCREMENT);
-        _cos_val_CH_2 += (_COS_STEP_CH_2); 
-        _sin_val_CH_2 += (_SIN_STEP_CH_2);
-        _OFFSET_Y_CH_2 = (_CENTER_OFFSET_Y) - ( (Math.cos(_cos_val_CH_2)/2 ) * (_CENTER_OFFSET_Y * (_Y_CH_2_INCREMENT)) );
-        _DRAW(_ctx_CH_2, _OFFSET_X_CH_2, _OFFSET_Y_CH_2, _CH_2_color);
+        while(_CURR_OFFSET_X_CH_2 < 700){
 
+            _CURR_OFFSET_X_CH_2 += (_X_CH_2_INCREMENT);
+            _cos_val_CH_2 += (_COS_STEP_CH_2); 
+            _sin_val_CH_2 += (_SIN_STEP_CH_2);
+
+            _CURR_OFFSET_Y_CH_2 = (_CENTER_OFFSET_Y_CH_2) - ( (Math.cos(_cos_val_CH_2)/2 ) * (_CENTER_OFFSET_Y * (_Y_CH_2_INCREMENT)) );
+
+            _DRAW(_ctx_CH_2, _CURR_OFFSET_X_CH_2, _CURR_OFFSET_Y_CH_2, _CH_2_color);
+
+        }
     }
     // -------------------------------------------------------------
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -245,8 +262,8 @@ function _clear(){
 
     // -------------------------------------------------------------
     // Reset all
-    _OFFSET_X_CH_1 = 0;
-    _OFFSET_X_CH_2 = 0;
+    _CURR_OFFSET_X_CH_1 = 0;
+    _CURR_OFFSET_X_CH_2 = 0;
     //_ctx_CH_1.save();
     //_ctx_CH_1.setTransform(1, 0, 0, 1, 0, 0);
     _ctx_CH_1.clearRect(0, 0, _ctx_CH_1.width, _ctx_CH_1.height);
@@ -276,6 +293,7 @@ function _DRAW(_this_ctx, _X, _Y, _COLOR){
 function _ctrl_CH_1(){
 
     // -------------------------------------------------------------
+    _ENABLE_CH_1 = !_ENABLE_CH_1;
     // -------------------------------------------------------------
 
 }
@@ -284,6 +302,7 @@ function _ctrl_CH_1(){
 function _ctrl_CH_2(){
 
     // -------------------------------------------------------------
+    _ENABLE_CH_2 = !_ENABLE_CH_2;
     // -------------------------------------------------------------
 
 }
@@ -303,10 +322,13 @@ function _color_selector(elem){
         // ----------------------------------
     }
     // -------------------------------------------------------------
-    if(elem.parentNode.parentNode.id == 'CH_1')
+    if(elem.parentNode.parentNode.id == 'CH_1'){
         _CH_1_color = _this_color;
-    else
+        __byId('CH_1-legend').style.borderColor = _this_color;
+    }else{
         _CH_2_color = _this_color;
+        __byId('CH_2-legend').style.borderColor = _this_color;
+    }
     // -------------------------------------------------------------
 
 }
@@ -315,19 +337,33 @@ function _color_selector(elem){
 function _X_INCR_DECR(elem){
 
     // -------------------------------------------------------------
+    var raw_value = parseFloat(elem.value);
+
     switch(elem.parentNode.parentNode.id){
+        
         // -----------------------------------------
         case "CH_1": 
-            _X_CH_1_INCREMENT = parseFloat(elem.value);
+
+            if(raw_value <= 0.02){
+                _X_CH_1_INCREMENT = 0.02;
+                elem.value = _X_CH_1_INCREMENT;
+            }else{
+                _X_CH_1_INCREMENT = raw_value;
+            }
 
         break;
         // -----------------------------------------
         case "CH_2": 
-            _X_CH_2_INCREMENT = parseFloat(elem.value);
+
+            if(raw_value <= 0.02){
+                _X_CH_2_INCREMENT = 0.02;
+                elem.value = _X_CH_2_INCREMENT;
+            }else{
+                _X_CH_2_INCREMENT = raw_value;
+            }
 
         break;
         // -----------------------------------------
-
     }
     // -------------------------------------------------------------
 }
@@ -341,22 +377,29 @@ function _Y_INCR_DECR(elem){
         case "CH_1": 
             _Y_CH_1_INCREMENT = parseFloat(elem.value);
 
-            if(_Y_CH_1_INCREMENT > _MAX_Y_VALUE){
+            if(_Y_CH_1_INCREMENT > _MAX_Y_VALUE)
                 _Y_CH_1_INCREMENT = _MAX_Y_VALUE;
-            }
+
+            else if(_Y_CH_1_INCREMENT < 0.001)
+                _Y_CH_1_INCREMENT = 0.001;
+
+            elem.value = _Y_CH_1_INCREMENT;
+
         break;
         // -----------------------------------------
         case "CH_2": 
             _Y_CH_2_INCREMENT = parseFloat(elem.value);
 
-            if(_Y_CH_2_INCREMENT > _MAX_Y_VALUE){
+            if(_Y_CH_2_INCREMENT > _MAX_Y_VALUE)
                 _Y_CH_2_INCREMENT = _MAX_Y_VALUE;
-            }
+
+            else if(_Y_CH_2_INCREMENT < 0.001)
+                _Y_CH_2_INCREMENT = 0.001;
+
+            elem.value = _Y_CH_2_INCREMENT;
         break;
         // -----------------------------------------
-
     }
-
     // -------------------------------------------------------------
 
 }
@@ -364,42 +407,76 @@ function _Y_INCR_DECR(elem){
 function _change_update_speed(elem){
 
     // -------------------------------------------------------------
-    _UPDATE_SPEED = (1000 - parseFloat(elem.value));
-    if(_UPDATE_SPEED <= 10)
-        _UPDATE_SPEED = 10;
-    else if(_UPDATE_SPEED >= 1000)
-        _UPDATE_SPEED = 1000;
+    var raw_value = parseFloat(elem.value);
+    // -------------------------------------------------------------
+    if(raw_value >= 990){
+        elem.value = 990; raw_value = 990;
+
+    }else if(raw_value <= 10){
+        elem.value = 10; raw_value = 10;
+    }
+
+    _REDRAW_DELAY = (1000 - raw_value);
+
+    // -------------------------------------------------------------
+    __log(_REDRAW_DELAY)
     // -------------------------------------------------------------
 
 }
 // ================================================================================
-/*
-    _OFFSET_X = (_CENTER_OFFSET) - Math.floor(Math.cos(_cos_val) * (_CENTER_OFFSET/2) );
-    _OFFSET_Y = (_CENTER_OFFSET) - Math.floor(Math.sin(_sin_val_CH_1) * (_CENTER_OFFSET/2) );
-
-    _point_A.style.marginLeft = (_OFFSET_X - 5)+'px';
-    _point_A.style.marginTop = (_OFFSET_Y - 5)+'px';
-
-    _DRAW(_OFFSET_X, _OFFSET_Y, "#F00");
+function _y_offset_changer(elem, _side){
 
     // -------------------------------------------------------------
-    _OFFSET_X = (_OFFSET_X) - Math.floor(Math.cos(_cos_val*2) * (_CENTER_OFFSET/4) );
-    _OFFSET_Y = (_OFFSET_Y) - Math.floor(Math.sin(_sin_val_CH_1*2) * (_CENTER_OFFSET/4) );
+    var _ID = elem.parentNode.parentNode.id;
+    var elem = __byId(_ID+"_Y_OFFSET_VAL");
+    var _value = parseFloat(elem.innerHTML.trim())
 
-    _point_B.style.marginLeft = (_OFFSET_X - 5)+'px';
-    _point_B.style.marginTop = (_OFFSET_Y - 5)+'px';
+    switch(_ID){
+        // -----------------------------------------
+        case 'CH_1':
+            //__log('CH_1')
+            if(_value < 1) _value = 1; else _value += parseInt(_side)*5;
+            elem.innerHTML = _value; _CENTER_OFFSET_Y_CH_1 = _value;
 
-    _DRAW(_OFFSET_X, _OFFSET_Y, "#0F0");
+        break;
+        // -----------------------------------------
+        case 'CH_2': 
+            //__log('CH_2')
+            if(_value < 1) _value = 1; else _value += parseInt(_side)*5;
+            elem.innerHTML = _value; _CENTER_OFFSET_Y_CH_2 = _value;
+        break;
+        // -----------------------------------------
+    }
+    // -------------------------------------------------------------
+    __log(_value)
+    // -------------------------------------------------------------
+
+}
+
+// ================================================================================
+function _setAllValues(){
 
     // -------------------------------------------------------------
-    _OFFSET_X = (_OFFSET_X) - Math.floor( (Math.cos(_cos_val*4) + Math.cos(_cos_val*4) ) * (_CENTER_OFFSET/6) );
-    _OFFSET_Y = (_OFFSET_Y) - Math.floor( (Math.sin(_sin_val_CH_1*4) + Math.sin(_sin_val_CH_1*4) ) * (_CENTER_OFFSET/6) );
+    __byId("CH_1_Y_OFFSET_VAL").innerHTML = _CENTER_OFFSET_Y_CH_1;
+    __byId("CH_2_Y_OFFSET_VAL").innerHTML = _CENTER_OFFSET_Y_CH_2;
+    // -------------------------------------------------------------
+    __byId("_number_input_X_CH_1").value = _X_CH_1_INCREMENT;
+    __byId("_number_input_Y_CH_1").value = _Y_CH_1_INCREMENT; 
+    __byId("_number_input_Y_CH_2").value = _X_CH_2_INCREMENT;
+    __byId("_number_input_X_CH_2").value = _Y_CH_2_INCREMENT;
+    // -------------------------------------------------------------
 
-    _point_C.style.marginLeft = (_OFFSET_X - 5)+'px';
-    _point_C.style.marginTop = (_OFFSET_Y - 5)+'px';
-
-    _DRAW(_OFFSET_X, _OFFSET_Y, "#00F");
-
-
+    __byId("speed_chenger").value = (1000 - _REDRAW_DELAY);
+    /*
+    __byId("").value = 
+    __byId("").value = 
+    __byId("").value = 
+    __byId("").value = 
 */
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+}
+// ================================================================================
 
